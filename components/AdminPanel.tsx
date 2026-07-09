@@ -226,13 +226,14 @@ export default function AdminPanel() {
                 setGeneratedLink(link);
                 
                 const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-                if (scriptUrl && scriptUrl !== "YOUR_NEW_GOOGLE_SCRIPT_URL_HERE") {
+                if (scriptUrl && scriptUrl !== "YOUR_NEW_GOOGLE_SCRIPT_URL_HERE" && scriptUrl !== "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
                   try {
                     await fetch(scriptUrl, {
                       method: "POST",
                       headers: { "Content-Type": "text/plain;charset=utf-8" },
                       body: JSON.stringify({ action: "generate", name: inviteName, phone: invitePhone, guests: inviteGuests, link: link })
                     });
+                    fetchRSVPs(); // Automatically refresh the table
                   } catch (e) {
                     console.error("Failed to save to sheet", e);
                   }
