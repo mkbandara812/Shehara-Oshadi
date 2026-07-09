@@ -62,6 +62,8 @@ export default function AdminPanel() {
         const dataLinks = await resLinks.json();
         if (dataLinks.status === "success" && Array.isArray(dataLinks.data)) {
           setGeneratedLinks(dataLinks.data);
+        } else if (dataLinks.status === "ok") {
+          setFetchError("⚠️ Your Google Apps Script is outdated! Please copy the latest google-apps-script.js code and Deploy as a NEW version to see your Generated Links.");
         }
       }
     } catch (e) {
