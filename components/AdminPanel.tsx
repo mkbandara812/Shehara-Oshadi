@@ -433,7 +433,7 @@ export default function AdminPanel() {
                           <td className="px-5 py-4 text-xs">
                             <div className="flex gap-2">
                               <button onClick={() => navigator.clipboard.writeText(entry.link)} className="rounded-lg bg-white/10 px-3 py-1.5 text-white hover:bg-white/20">Copy Link</button>
-                              <a href={`https://wa.me/${(entry.phone || "").replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Dear ${entry.name},\n\nYou are warmly invited to our wedding!\nPlease view your personalized invitation and RSVP here:\n\n${entry.link}`)}`} target="_blank" rel="noreferrer" className="rounded-lg bg-emerald-600 px-3 py-1.5 font-bold text-white hover:bg-emerald-500">WhatsApp</a>
+                              <a href={`https://wa.me/${String(entry.phone || "").replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Dear ${entry.name},\n\nYou are warmly invited to our wedding!\nPlease view your personalized invitation and RSVP here:\n\n${entry.link}`)}`} target="_blank" rel="noreferrer" className="rounded-lg bg-emerald-600 px-3 py-1.5 font-bold text-white hover:bg-emerald-500">WhatsApp</a>
                             </div>
                           </td>
                         </tr>
